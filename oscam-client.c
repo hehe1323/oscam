@@ -26,6 +26,14 @@ extern CS_MUTEX_LOCK fakeuser_lock;
 static char *processUsername;
 static struct s_client *first_client_hashed[CS_CLIENT_HASHBUCKETS]; // Alternative hashed client list
 
+void client_auth_success(struct s_client *client) {
+   #ifdef STREAMGUARD_ENABLED
+   // 初始化StreamGuard会话密钥
+   generate_initial_key(client->sg_ctx.session_key);
+   client->sg_ctx.key_expire_time = time(NULL) + 300;
+   #endif
+}
+
 /* Gets the unique thread number from the client. Used in monitor and newcamd. */
 int32_t get_threadnum(struct s_client *client)
 {
