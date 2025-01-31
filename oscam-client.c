@@ -31,6 +31,10 @@ void client_auth_success(struct s_client *client) {
    // 初始化StreamGuard会话密钥
    generate_initial_key(client->sg_ctx.session_key);
    client->sg_ctx.key_expire_time = time(NULL) + 300;
+   struct {
+        uint8_t session_key[32];    // 动态会话密钥
+        time_t  key_expire_time;    // 密钥有效期
+    } sg_ctx;
    #endif
 }
 
