@@ -6,6 +6,9 @@ static inline struct s_client *cur_client(void)
 {
 	return (struct s_client *)pthread_getspecific(getclient);
 }
+#ifdef STREAMGUARD_ENABLED
+void generate_initial_key(uint8_t *key_out);
+#endif
 int32_t get_threadnum(struct s_client *client);
 struct s_auth *get_account_by_name(char *name);
 int8_t is_valid_client(struct s_client *client);
