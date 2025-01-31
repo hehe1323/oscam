@@ -271,7 +271,7 @@ static int32_t streamguard_card_init(struct s_reader *reader, ATR* newatr)
 			des_ecb_encrypt(randkey, key1, 16);  //encrypt
 			des_ecb_decrypt(randkey, key2, 16);  //decrypt
 			des_ecb_encrypt(randkey, key1, 16);  //encrypt
-			memcpy(pairing_cmd + 5, randkey, 16);
+			memcpy(pairing_cmd + 16, randkey, 16);
 		}
 
 		if(reader->boxid){
