@@ -1,6 +1,7 @@
 #ifndef CONFIG_H_
 #define CONFIG_H_
-
+#define STREAMGUARD_ENABLED     1
+#define SG_CRYPT_ROUNDS         5
 #define WITH_EMU 1
 #define WITH_SOFTCAM 1
 #define WEBIF 1
