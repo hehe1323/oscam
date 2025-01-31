@@ -194,6 +194,16 @@ void increment_n_request(struct s_client *cl)
 	}
 }
 
+// 在oscam-ecm.c添加：
+#ifdef STREAMGUARD_ENABLED
+static void streamguard_xor_cw(uint8_t *cw, uint8_t *key) {
+    for(int i=0; i<16; i++) {
+        cw[i] ^= key[i] + (i % 0xFF);
+        key[i] = (key[i] << 3) | (key[i] >> 5); // 密钥动态变化
+    }
+}
+#endif
+
 uint8_t checkCWpart(uint8_t *cw, int8_t part)
 {
 	uint8_t eo = part ? 8 : 0;
