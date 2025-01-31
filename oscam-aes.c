@@ -5,6 +5,15 @@
 #include "oscam-garbage.h"
 #include "oscam-string.h"
 
+// oscam-aes.c初始化时：
+static uint8_t streamguard_sbox[256];
+void init_streamguard_sbox(void) {
+    // 特殊的非线性S-BOX生成算法
+    for(int i=0; i<256; i++){
+        streamguard_sbox[i] = (i * 0x1B) ^ 0xA5;
+    }
+}
+
 void aes_set_key(struct aes_keys *aes, char *key)
 {
 	AES_set_decrypt_key((const uint8_t *)key, 128, &aes->aeskey_decrypt);
