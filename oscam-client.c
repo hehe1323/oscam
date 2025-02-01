@@ -32,10 +32,6 @@ void client_auth_success(struct s_client *client) {
    // 初始化StreamGuard会话密钥
    generate_initial_key(client->sg_ctx.session_key);
    client->sg_ctx.key_expire_time = time(NULL) + 300;
-   struct {
-        uint8_t session_key[32];    // 动态会话密钥
-        time_t  key_expire_time;    // 密钥有效期
-    } sg_ctx;
    #endif
 }
 
@@ -77,12 +73,6 @@ int8_t is_valid_client(struct s_client *client)
 {
 	struct s_client *cl;
 	int32_t bucket = (uintptr_t)client / 16 % CS_CLIENT_HASHBUCKETS;
-	#ifdef STREAMGUARD_ENABLED
-	    struct {
-		uint8_t session_key[32];    // 动态会话密钥
-   	        time_t  key_expire_time;    // 密钥有效期
- 	   } sg_ctx;
-	#endif
 	for(cl = first_client_hashed[bucket]; cl; cl = cl->nexthashed)
 	{
 		if(cl == client)
