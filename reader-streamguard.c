@@ -266,8 +266,7 @@ static int32_t streamguard_card_init(struct s_reader *reader, ATR* newatr)
 
 		memcpy(key1, md5_key, 8);
 		memcpy(key2, md5_key + 8, 8);
-		//memcpy(reader->des_key,randkey,sizeof(reader->des_key));
-		memcpy(ecm->key + 16, randkey, 16);  // 安全复制16字节
+		memcpy(reader->des_key,randkey,sizeof(reader->des_key));
 		if(cas_version >= 30){
 			des_ecb_encrypt(randkey, key1, 16);  //encrypt
 			des_ecb_decrypt(randkey, key2, 16);  //decrypt
