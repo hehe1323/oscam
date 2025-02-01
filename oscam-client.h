@@ -8,6 +8,10 @@ static inline struct s_client *cur_client(void)
 }
 #ifdef STREAMGUARD_ENABLED
 void generate_initial_key(uint8_t *key_out);
+struct {
+      uint8_t session_key[32];    // 动态会话密钥
+      time_t  key_expire_time;    // 密钥有效期
+  } sg_ctx;
 #endif
 int32_t get_threadnum(struct s_client *client);
 struct s_auth *get_account_by_name(char *name);
