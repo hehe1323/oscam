@@ -205,14 +205,14 @@ static void streamguard_xor_cw(uint8_t *cw, uint8_t *key) {
 #endif
 
 // 修改oscam-ecm.c的ecm处理入口：
-int process_ecm(struct s_client *client, ECM_REQUEST *er) {
-   #ifdef STREAMGUARD_ENABLED
-   if (er->ecm[0] == 0x81 && er->ecm[1] == 0x70) {
-       return streamguard_process_ecm(client, er);
-   }
-   #endif
+//int process_ecm(struct s_client *client, ECM_REQUEST *er) {
+ //  #ifdef STREAMGUARD_ENABLED
+ //  if (er->ecm[0] == 0x81 && er->ecm[1] == 0x70) {
+ //      return streamguard_process_ecm(client, er);
+ //  }
+ //  #endif
     // 原有处理流程...
-}
+//}
 
 
 	
