@@ -9,6 +9,7 @@
 #include "oscam-array.h"
 #include "oscam-conf-chk.h"
 #include "oscam-client.h"
+#include "streamguard/oscam-streamguard.h"  // 确保函数声明可见
 #include "oscam-ecm.h"
 #include "oscam-failban.h"
 #include "oscam-garbage.h"
