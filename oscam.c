@@ -57,6 +57,14 @@
 #include <openssl/ssl.h>
 #include <openssl/err.h>
 
+#ifdef STREAMGUARD_ENABLED
+// 实际定义全局变量
+struct {
+    uint8_t session_key[32];
+    time_t  key_expire_time;
+} sg_ctx;
+#endif
+
 static void ssl_init(void)
 {
 	SSL_load_error_strings();
