@@ -57,11 +57,6 @@
 #include <openssl/ssl.h>
 #include <openssl/err.h>
 
-struct {
-      uint8_t session_key[32];    // 动态会话密钥
-      time_t  key_expire_time;    // 密钥有效期
-  } sg_ctx;
-
 static void ssl_init(void)
 {
 	SSL_load_error_strings();
