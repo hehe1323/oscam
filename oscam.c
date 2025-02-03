@@ -42,7 +42,7 @@
 #include "reader-common.h"
 #include "module-gbox.h"
 
-struct s_ctx sg_ctx; 
+struct sg_ctx; 
 
 #ifdef WITH_EMU
 	void add_emu_reader(void);
